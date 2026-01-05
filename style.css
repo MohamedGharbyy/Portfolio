@@ -46,21 +46,31 @@ span:hover {
     cursor: pointer;
 }
 b {
-    color: rgb(160, 200, 230);
+    color: rosybrown;
 }
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
+div:not(.container) {
+    border: 2px solid rosybrown;
+}
+@media (max-width: 480px) {
     body {
         padding: 1.5rem;
+        font-size: 0.9rem;
     }
 
     .container {
-        /* On smaller screens, force a single column for the large cards */
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     h1 {
         font-size: 1.8rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    p {
+        line-height: 1.6;
     }
 }
