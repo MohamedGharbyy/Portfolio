@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(210,210,255);
+}
+body {
+    background-color: rgb(37,37,67);
+    padding: 1.5rem;
+}
+@media (min-width: 769px) {
+    body { padding: 2rem 5%; }
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    justify-content: center;
+    gap: 2rem;
+}
+.card {
+    background-color: rgb(67,67,97);
+    padding: 1.5rem;
+    border-radius: 20px;
+    -webkit-transition: -webkit-transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out;
+}
+.card:not(.exp):hover {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+}
+.exp:hover {
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+}
+.exp {
+    grid-row: span 3;
+}
+.exp2 {
+    grid-row: span 2;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+span, span:hover {
+    transition: color 200ms ease-in-out;
+}
+span:hover {
+    color: skyblue;
+    cursor: pointer;
+}
+b {
+    color: rosybrown;
+}
+p, a {
+    overflow-wrap: break-word;
+}
+div:not(.container) {
+    border: 2px solid rosybrown;
+}
+@media (max-width: 768px) {
+    body {
+        font-size: 0.7rem;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+
+    a {
+        color: skyblue;
+        text-decoration: none;
+    }
+}
