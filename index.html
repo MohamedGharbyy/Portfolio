@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("portfolio-theme");
+        var theme = stored === "light" || stored === "dark"
+          ? stored
+          : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of a software engineer specializing in modern web development." />
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="#" class="site-brand" aria-label="Portfolio home">
+        <span class="brand-wordmark" aria-hidden="true">
+          <span class="brand-stroke">m</span>g serve
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="nav-cta">Get in Touch</a>
+      </nav>
+
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light mode">
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <line x1="12" y1="1.5" x2="12" y2="4" />
+            <line x1="12" y1="20" x2="12" y2="22.5" />
+            <line x1="1.5" y1="12" x2="4" y2="12" />
+            <line x1="20" y1="12" x2="22.5" y2="12" />
+            <line x1="4.4" y1="4.4" x2="6.1" y2="6.1" />
+            <line x1="17.9" y1="17.9" x2="19.6" y2="19.6" />
+            <line x1="4.4" y1="19.6" x2="6.1" y2="17.9" />
+            <line x1="17.9" y1="6.1" x2="19.6" y2="4.4" />
+          </g>
+        </svg>
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.5 14.2A8.5 8.5 0 0110 3.6a8.6 8.6 0 106.4 15.4 8.5 8.5 0 004.1-4.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <button
+        class="menu-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav-overlay" aria-hidden="true"></div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+    </div>
+    <a href="#contact" class="mobile-nav-cta">Get in Touch</a>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT (placeholder for future sections)
+       ============================================================ -->
+  <main>
+    <section id="home" class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-container">
+        <div class="hero-visual" aria-hidden="true">
+          <svg class="hero-laptop" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="laptopGlow" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0.28" />
+                <stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="screenFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#141B29" />
+                <stop offset="100%" stop-color="#0D1220" />
+              </linearGradient>
+            </defs>
+
+            <circle cx="210" cy="150" r="150" fill="url(#laptopGlow)" />
+
+            <!-- Screen -->
+            <rect x="90" y="40" width="240" height="160" rx="10" fill="url(#screenFill)" stroke="var(--color-border)" stroke-width="1.5" />
+            <rect x="90" y="40" width="240" height="160" rx="10" fill="none" stroke="var(--color-accent)" stroke-opacity="0.18" stroke-width="1" />
+
+            <!-- Screen content: subtle code lines -->
+            <circle cx="108" cy="56" r="2.5" fill="var(--color-accent)" fill-opacity="0.6" />
+            <circle cx="118" cy="56" r="2.5" fill="var(--color-text-muted)" fill-opacity="0.5" />
+            <circle cx="128" cy="56" r="2.5" fill="var(--color-text-muted)" fill-opacity="0.5" />
+
+            <rect x="108" y="74" width="70" height="5" rx="2.5" fill="var(--color-accent)" fill-opacity="0.55" />
+            <rect x="108" y="88" width="110" height="5" rx="2.5" fill="var(--color-text-secondary)" fill-opacity="0.3" />
+            <rect x="120" y="102" width="90" height="5" rx="2.5" fill="var(--color-text-secondary)" fill-opacity="0.22" />
+            <rect x="120" y="116" width="60" height="5" rx="2.5" fill="var(--color-text-secondary)" fill-opacity="0.22" />
+            <rect x="108" y="132" width="95" height="5" rx="2.5" fill="var(--color-accent)" fill-opacity="0.4" />
+            <rect x="108" y="146" width="130" height="5" rx="2.5" fill="var(--color-text-secondary)" fill-opacity="0.18" />
+            <rect x="120" y="160" width="75" height="5" rx="2.5" fill="var(--color-text-secondary)" fill-opacity="0.18" />
+
+            <!-- Laptop base -->
+            <path d="M70 208 L350 208 L372 254 C374 258 371 262 366 262 L54 262 C49 262 46 258 48 254 Z" fill="var(--color-laptop-base)" stroke="var(--color-laptop-base-stroke)" stroke-width="1.5" />
+            <rect x="185" y="208" width="50" height="4" rx="2" fill="var(--color-laptop-base-stroke)" />
+          </svg>
+        </div>
+
+        <div class="hero-content">
+          <p class="hero-intro">Hello, I'm</p>
+          <h1 id="hero-heading" class="hero-title">Mohamed Gharbi</h1>
+          <p class="hero-subtitle" aria-label="Computer Engineering Student, Full-Stack Developer, Data Science Enthusiast, Aspiring AI Engineer"><span class="typing-text" id="typing-text"></span><span class="typing-cursor" aria-hidden="true">|</span></p>
+          <p class="hero-description">
+            2nd-year Computer Engineering student focused on Full Stack web development, with a growing interest in Data and AI-related technologies.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="#projects" class="btn btn-secondary">View Projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-inner">
+          <div class="about-content">
+            <span class="about-label">About</span>
+            <h2 id="about-heading" class="about-heading">
+              Turning ideas into functional, well-designed software.
+            </h2>
+            <p class="about-text">
+              I'm a 2nd-year Computer Engineering student at <strong>École Polytechnique de Sousse (EPS)</strong>, specializing in <strong>Data Science & AI</strong>. Through internships at <strong>ETC Tunisie</strong> and the <strong>Centre Informatique du Ministère de la Santé (CIMS)</strong>, I've gained hands-on experience in web development and contributed to real-world platforms, including <strong>CliniCare</strong>, a secure medical consultation system I developed during my internship at CIMS. I'm curious, solution-oriented, and always looking to learn and build, with interests spanning <strong>software development</strong> and <strong>Data/AI-related technologies</strong>.
+            </p>
+            <a href="assets/cv.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download my CV</a>
+          </div>
+          <div class="about-visual">
+            <img src="assets/profile.png" alt="Mohamed Gharbi" class="about-photo" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- ============================================================
+       EDUCATION
+       ============================================================ -->
+  <section id="education" class="education" aria-labelledby="education-heading">
+    <div class="container">
+      <div class="education-header">
+        <span class="education-label">Education</span>
+        <h2 id="education-heading" class="education-heading">Academic Background</h2>
+      </div>
+
+      <div class="education-timeline">
+        <article class="education-entry">
+          <div class="education-entry-marker" aria-hidden="true"></div>
+          <div class="education-entry-content">
+            <span class="education-period">Sept 2025 – Present</span>
+            <h3 class="education-institution">École Polytechnique de Sousse (EPS)</h3>
+            <p class="education-degree">Engineering Degree in Computer Science</p>
+            <p class="education-description">
+              Three-year engineering program in Computer Science; currently in the 2nd year.
+            </p>
+          </div>
+        </article>
+
+        <article class="education-entry">
+          <div class="education-entry-marker" aria-hidden="true"></div>
+          <div class="education-entry-content">
+            <span class="education-period">Sept 2023 – June 2025</span>
+            <h3 class="education-institution">Institut Préparatoire aux Études d'Ingénieurs de Kairouan (IPEIK)</h3>
+            <p class="education-degree">Preparatory Cycle in Mathematics and Physics</p>
+            <p class="education-description">
+              Two-year preparatory program in Mathematics and Physics ahead of the engineering entrance exams.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS
+       ============================================================ -->
+  <section id="skills" class="skills" aria-labelledby="skills-heading">
+    <div class="container">
+      <div class="skills-header">
+        <span class="skills-label">Skills</span>
+        <h2 id="skills-heading" class="skills-heading">Technologies I work with</h2>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-category">
+          <h3 class="skill-category-title">Programming Languages</h3>
+          <p class="skill-category-desc">Core languages used across academic and professional projects</p>
+          <ul class="skill-tags" aria-label="Programming Languages">
+            <li class="skill-tag">Python</li>
+            <li class="skill-tag">Java</li>
+            <li class="skill-tag">PHP</li>
+            <li class="skill-tag">JavaScript</li>
+            <li class="skill-tag">TypeScript</li>
+            <li class="skill-tag">C</li>
+            <li class="skill-tag">SQL</li>
+          </ul>
+        </article>
+
+        <article class="skill-category">
+          <h3 class="skill-category-title">Web Development</h3>
+          <p class="skill-category-desc">Frameworks and technologies for building web applications</p>
+          <ul class="skill-tags" aria-label="Web Development">
+            <li class="skill-tag">Angular</li>
+            <li class="skill-tag">Symfony</li>
+            <li class="skill-tag">Spring Boot</li>
+            <li class="skill-tag">Django</li>
+            <li class="skill-tag">HTML5</li>
+            <li class="skill-tag">CSS3</li>
+          </ul>
+        </article>
+
+        <article class="skill-category">
+          <h3 class="skill-category-title">Databases</h3>
+          <p class="skill-category-desc">Data storage and management systems</p>
+          <ul class="skill-tags" aria-label="Databases">
+            <li class="skill-tag">PostgreSQL</li>
+            <li class="skill-tag">MySQL</li>
+            <li class="skill-tag">Oracle PL/SQL</li>
+          </ul>
+        </article>
+
+        <article class="skill-category">
+          <h3 class="skill-category-title">Tools &amp; Technologies</h3>
+          <p class="skill-category-desc">Development tools, platforms, and practices</p>
+          <ul class="skill-tags" aria-label="Tools and Technologies">
+            <li class="skill-tag">Git</li>
+            <li class="skill-tag">GitHub</li>
+            <li class="skill-tag">GitLab</li>
+            <li class="skill-tag">Figma</li>
+            <li class="skill-tag">Odoo</li>
+          </ul>
+        </article>
+
+        <article class="skill-category">
+          <h3 class="skill-category-title">Other</h3>
+          <p class="skill-category-desc">Additional tools and technologies</p>
+          <ul class="skill-tags" aria-label="Other">
+            <li class="skill-tag">Cisco Packet Tracer</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE
+         ============================================================ -->
+    <section id="experience" class="experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <div class="experience-header">
+          <span class="experience-label">Experience</span>
+          <h2 id="experience-heading" class="experience-heading">Where I've Worked</h2>
+        </div>
+
+        <div class="experience-timeline">
+          <article class="experience-item">
+            <div class="experience-item-content">
+              <span class="experience-date">August 2026</span>
+              <h3 class="experience-role">Full Stack Developer Intern</h3>
+              <p class="experience-company">Centre Informatique du Ministère de la Santé (CIMS) — Tunis, Tunisia</p>
+              <p class="experience-description">
+                Designed and developed CliniCare, a secure web application for managing the medical consultation journey. Worked autonomously on design, implementation, and security of various features.
+              </p>
+              <ul class="experience-tech-list" aria-label="Technologies used">
+                <li>Angular</li>
+                <li>Spring Boot</li>
+                <li>PostgreSQL</li>
+                <li>TypeScript</li>
+                <li>Java</li>
+                <li>RestAPIs</li>
+                <li>Git</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <div class="experience-item-content">
+              <span class="experience-date">July 2026</span>
+              <h3 class="experience-role">Full Stack Developer Intern</h3>
+              <p class="experience-company">ETC Tunisia — Kairouan, Tunisia</p>
+              <p class="experience-description">
+                Contributed to the development and evolution of a professional web platform within the dev team. Participated in the development of D'OPS Licence, a platform for managing business-creation procedures and commercial operations. Developed synchronization, search, filtering, and data export features.
+              </p>
+              <ul class="experience-tech-list" aria-label="Technologies used">
+                <li>Angular</li>
+                <li>TypeScript</li>
+                <li>Symfony</li>
+                <li>PHP</li>
+                <li>GitLab</li>
+                <li>SonarQube</li>
+                <li>Unit Testing</li>
+                <li>EsLint</li>
+                <li>Git</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS
+         ============================================================ -->
+    <section id="projects" class="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="projects-header">
+          <span class="projects-label">Projects</span>
+          <h2 id="projects-heading" class="projects-heading">Selected Work</h2>
+        </div>
+
+        <div class="projects-list">
+          <article class="project-card project-card--featured" aria-label="CliniCare project details">
+            <div class="project-card-inner">
+              <div class="project-card-content">
+                <span class="project-badge">Featured</span>
+                <h3 class="project-name">CliniCare</h3>
+                <p class="project-description">
+                  Secure web platform for managing medical consultations between patients and healthcare professionals.
+                </p>
+                <ul class="project-tech-list" aria-label="Technologies used">
+                  <li>Angular</li>
+                  <li>Spring Boot</li>
+                  <li>PostgreSQL</li>
+                  <li>TypeScript</li>
+                  <li>Java</li>
+                  <li>RestAPIs</li>
+                  <li>Git</li>
+                </ul>
+                <p class="project-role">
+                  Designed and developed the full-stack architecture and database during my CIMS internship. Built authentication and role management (patient, doctor, admin), and implemented the consultation flow including exam requests, diagnosis, prescription, and reports.
+                </p>
+                <div class="project-links">
+                  <a href="https://github.com/MohamedGharbyy" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View CliniCare on GitHub">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" fill="currentColor">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <div class="projects-grid" aria-label="Additional projects">
+            <article class="project-card" aria-label="BootStore project details">
+              <div class="project-card-inner">
+                <div class="project-card-content">
+                  <h3 class="project-name">BootStore</h3>
+                  <p class="project-description">
+                    Fully responsive football cleats e-commerce site with a clean UI and a focus on UX across mobile, tablet, and desktop.
+                  </p>
+                  <ul class="project-tech-list" aria-label="Technologies used">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                  </ul>
+                  <p class="project-role">
+                    Built the complete frontend with scalable responsive sizing using rem units and -webkit- CSS prefixes for cross-browser compatibility. Deployed via GitHub Pages.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" aria-label="Django Stock Management project details">
+              <div class="project-card-inner">
+                <div class="project-card-content">
+                  <h3 class="project-name">Stock Management — Django</h3>
+                  <p class="project-description">
+                    Academic web app for managing product stock through a dynamic interface.
+                  </p>
+                  <ul class="project-tech-list" aria-label="Technologies used">
+                    <li>Django</li>
+                    <li>Python</li>
+                    <li>SQL</li>
+                  </ul>
+                  <p class="project-role">
+                    Implemented full CRUD operations: add, edit, delete, and track products.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" aria-label="PHP Café Management project details">
+              <div class="project-card-inner">
+                <div class="project-card-content">
+                  <h3 class="project-name">Café Management — PHP</h3>
+                  <p class="project-description">
+                    Academic web app for managing café products, orders, and stock via a dynamic interface.
+                  </p>
+                  <ul class="project-tech-list" aria-label="Technologies used">
+                    <li>PHP</li>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                  </ul>
+                  <p class="project-role">
+                    Developed the full interface for product management, order processing, and stock tracking.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" aria-label="Pygame 2-Player Game project details">
+              <div class="project-card-inner">
+                <div class="project-card-content">
+                  <h3 class="project-name">2-Player Keyboard Game — Pygame</h3>
+                  <p class="project-description">
+                    Academic 2-player keyboard game where players race to catch objects and avoid obstacles.
+                  </p>
+                  <ul class="project-tech-list" aria-label="Technologies used">
+                    <li>Python</li>
+                    <li>Pygame</li>
+                  </ul>
+                  <p class="project-role">
+                    Implemented gameplay logic: catch fish (+1), avoid bombs (-1), win by score or time.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card" aria-label="AetherCloud project details">
+              <div class="project-card-inner">
+                <div class="project-card-content">
+                  <h3 class="project-name">AetherCloud</h3>
+                  <p class="project-description">
+                    Local-server data storage web app built collaboratively under time constraints during the Nuit de l'Info Hackathon.
+                  </p>
+                  <ul class="project-tech-list" aria-label="Technologies used">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                  </ul>
+                  <p class="project-role">
+                    Developed as part of a team and presented a functional solution within the hackathon timeframe.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-header">
+          <span class="contact-label">Get in Touch</span>
+          <h2 id="contact-heading" class="contact-heading">Open to opportunities and collaboration.</h2>
+        </div>
+        <p class="contact-text">
+          I'm a 2nd-year Computer Engineering student actively seeking internships and professional projects. If you'd like to discuss an opportunity or just exchange ideas, feel free to reach out.
+        </p>
+        <div class="contact-links" aria-label="Contact links">
+          <a href="https://github.com/MohamedGharbyy" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/in/mohamed-gharbyy/" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="mailto:mohamed.gharbyy@gmail.com" class="contact-link" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <p class="footer-brand">Mohamed Gharbi</p>
+          <p class="footer-description">
+            Software engineer focused on building clean, performant, and user-centered digital experiences.
+          </p>
+        </div>
+
+        <div class="footer-social" aria-label="Contact information">
+          <a href="mailto:mohamed.gharbyy@gmail.com">mohamed.gharbyy@gmail.com</a>
+          <a href="tel:+21620106619">+216 20 106 619</a>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">&copy; <span id="current-year"></span> Mohamed Gharbi. All rights reserved.</p>
+          <button class="back-to-top" aria-label="Back to top">
+            <span>Back to top</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <polyline points="18 15 12 9 6 15" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
