@@ -15,7 +15,7 @@
   const mobileNavLinks = document.querySelectorAll(".mobile-nav-links a");
   const backToTopBtn = document.querySelector(".back-to-top");
   const mainNavLinks = document.querySelectorAll(".main-nav a");
-  const themeToggle = document.querySelector(".theme-toggle");
+  const themeToggles = document.querySelectorAll(".theme-toggle");
 
   /* ----------------------------------------------------------
      Theme (light / dark)
@@ -23,12 +23,13 @@
   const THEME_KEY = "portfolio-theme";
 
   function setThemeToggleState(theme) {
-    if (!themeToggle) return;
-    themeToggle.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
-    themeToggle.setAttribute(
-      "aria-label",
-      theme === "light" ? "Switch to dark mode" : "Switch to light mode"
-    );
+    themeToggles.forEach(function(toggle) {
+      toggle.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+      toggle.setAttribute(
+        "aria-label",
+        theme === "light" ? "Switch to dark mode" : "Switch to light mode"
+      );
+    });
   }
 
   // The theme attribute is already set by the inline script in <head>
@@ -36,8 +37,8 @@
   // just sync the toggle button's state and wire up the click handler.
   setThemeToggleState(document.documentElement.getAttribute("data-theme") || "dark");
 
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
+  themeToggles.forEach(function(toggle) {
+    toggle.addEventListener("click", () => {
       const nextTheme = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
       document.documentElement.setAttribute("data-theme", nextTheme);
       setThemeToggleState(nextTheme);
@@ -47,7 +48,7 @@
         /* localStorage unavailable (private mode, etc.) — theme still applies for this session */
       }
     });
-  }
+  });
 
   /* ----------------------------------------------------------
      Section Reveal
