@@ -1594,6 +1594,10 @@ main {
   outline-offset: 2px;
 }
 
+.main-nav .nav-cta.active {
+  color: #0A0D14;
+}
+
 /* Theme toggle */
 .theme-toggle {
   display: flex;
