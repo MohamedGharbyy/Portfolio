@@ -1820,6 +1820,17 @@ main {
   outline-offset: 2px;
 }
 
+.mobile-nav-links .mobile-nav-cta.active {
+  color: #0A0D14;
+  background-color: var(--color-accent);
+}
+
+.mobile-nav-links .mobile-nav-cta.active:hover,
+.mobile-nav-links .mobile-nav-cta.active:focus-visible {
+  color: #F5F7FA;
+  background-color: #0A0D14;
+}
+
 /* Prevent body scroll when mobile menu is open */
 body.menu-open {
   overflow: hidden;
