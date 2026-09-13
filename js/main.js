@@ -53,7 +53,7 @@
   /* ----------------------------------------------------------
      Section Reveal
      ---------------------------------------------------------- */
-  const revealSections = document.querySelectorAll(".about, .education, .skills, .experience, .projects, .contact");
+  const revealSections = document.querySelectorAll(".about, .education, .skills, .experience, .projects, .certifications, .contact");
 
   function revealVisibleSections() {
     var viewportHeight = window.innerHeight;
