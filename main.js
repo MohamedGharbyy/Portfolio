@@ -21,6 +21,50 @@
      Theme (light / dark)
      ---------------------------------------------------------- */
   const THEME_KEY = "portfolio-theme";
+  const systemThemeQuery = window.matchMedia("(prefers-color-scheme: light)");
+
+  function getSystemTheme() {
+    return systemThemeQuery.matches ? "light" : "dark";
+  }
+
+  function hasUserPreference() {
+    try {
+      var stored = localStorage.getItem(THEME_KEY);
+      return stored === "light" || stored === "dark";
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function applySystemTheme() {
+    var theme = getSystemTheme();
+    document.documentElement.setAttribute("data-theme", theme);
+    setThemeToggleState(theme);
+  }
+
+  var systemThemeListener = null;
+
+  function enableSystemThemeListener() {
+    if (systemThemeListener) return;
+    systemThemeListener = function () {
+      if (!hasUserPreference()) {
+        applySystemTheme();
+      }
+    };
+    systemThemeQuery.addEventListener("change", systemThemeListener);
+  }
+
+  function disableSystemThemeListener() {
+    if (systemThemeListener) {
+      systemThemeQuery.removeEventListener("change", systemThemeListener);
+      systemThemeListener = null;
+    }
+  }
+
+  // If the user has never manually selected a theme, listen for system changes.
+  if (!hasUserPreference()) {
+    enableSystemThemeListener();
+  }
 
   function setThemeToggleState(theme) {
     themeToggles.forEach(function(toggle) {
@@ -35,11 +79,11 @@
   // The theme attribute is already set by the inline script in <head>
   // (before first paint, to avoid a flash of the wrong theme). Here we
   // just sync the toggle button's state and wire up the click handler.
-  setThemeToggleState(document.documentElement.getAttribute("data-theme") || "dark");
+  setThemeToggleState(document.documentElement.getAttribute("data-theme") || getSystemTheme());
 
   themeToggles.forEach(function(toggle) {
     toggle.addEventListener("click", () => {
-      const nextTheme = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+      var nextTheme = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
       document.documentElement.setAttribute("data-theme", nextTheme);
       setThemeToggleState(nextTheme);
       try {
@@ -47,6 +91,7 @@
       } catch (e) {
         /* localStorage unavailable (private mode, etc.) — theme still applies for this session */
       }
+      disableSystemThemeListener();
     });
   });
 
