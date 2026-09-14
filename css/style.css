@@ -108,6 +108,10 @@
   /* Give the laptop base enough contrast against the light page background */
   --color-laptop-base: #DCE3ED;
   --color-laptop-base-stroke: rgba(16, 20, 28, 0.22);
+
+  .certification-icon img {
+    filter: brightness(0.52) contrast(1) saturate(2);
+  }
 }
 
 /* Reset */
@@ -2042,18 +2046,88 @@ body.menu-open {
 }
 
 .certification-icon {
-  color: var(--color-accent-text);
-  margin-bottom: var(--space-6);
+  height: 48px;
+  margin: 0 auto var(--space-6);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   opacity: 0.8;
   transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.certification-icon img {
+  height: 48px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
 }
 
 .certification-card:hover .certification-icon {
   opacity: 1;
   transform: scale(1.05);
+}
+
+.certification-logo--certiport {
+  max-width: 120px;
+  transform: scale(1.25);
+}
+
+.certification-logo--ibm {
+  max-width: 120px;
+  transform: scale(0.6);
+}
+
+.certification-logo--google {
+  max-width: 120px;
+  transform: scale(1.55);
+}
+
+.certification-logo--google-developers {
+  max-width: 120px;
+  transform: scale(5.5);
+}
+
+.certification-logo--france-education {
+  max-width: 120px;
+  transform: scale(1);
+}
+
+@media (max-width: 767px) {
+  .certification-icon {
+    height: 36px;
+  }
+
+  .certification-icon img {
+    height: 36px;
+    max-width: 100px;
+  }
+
+  .certification-logo--certiport {
+    max-width: 88px;
+    transform: scale(1.25);
+  }
+
+  .certification-logo--ibm {
+    max-width: 88px;
+    transform: scale(0.6);
+  }
+
+  .certification-logo--google {
+    max-width: 88px;
+    transform: scale(1.55);
+  }
+
+  .certification-logo--google-developers {
+    max-width: 88px;
+    transform: scale(5.5);
+  }
+
+  .certification-logo--france-education {
+    max-width: 88px;
+    transform: scale(1);
+  }
 }
 
 .certification-name {
